@@ -30,7 +30,10 @@ jobs:
         
       - name: Publish
         run: dotnet publish ./CurrentTimeService.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-        
+
+      - name: Display Azure Publish Profile Secret
+        run: echo ${{ secrets.AZURE_PUBLISH_PROFILE }}
+      
       - name: Deployment
         uses: azure/webapps-deploy@v2
         with:
